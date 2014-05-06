@@ -29,7 +29,11 @@
 
 *   **2. 分区操作**
 
+    第一次操作:
+
         adb shell /tmp/split_part.sh
-        # 重复步骤"1. 上传文件"(不然可能会变砖)
+
+    第二次操作: 重复步骤"1. 上传文件"
+
         adb shell /tmp/split_part.sh
         adb reboot
