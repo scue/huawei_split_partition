@@ -29,7 +29,7 @@
 
 *   **2. 分区操作**
 
-        adb shell /tmp/splite_part.sh
-        adb reboot recovery
-        adb shell /tmp/splite_part.sh
+        adb shell /tmp/split_part.sh
+        # 重复步骤"1. 上传文件"(不然可能会变砖)
+        adb shell /tmp/split_part.sh
         adb reboot
