@@ -13,4 +13,6 @@ adb wait-for-device && adb push format_part.sh /tmp/format_part.sh
 adb wait-for-device && adb shell chmod 755 /tmp/busybox
 adb wait-for-device && adb shell chmod 755 /tmp/format_part.sh
 adb wait-for-device && adb shell /tmp/format_part.sh
+echo "=== all done"
+adb wait-for-device && adb reboot
 @pause
