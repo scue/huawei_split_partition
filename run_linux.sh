@@ -18,6 +18,7 @@
 #===============================================================================
 
 split(){
+    echo "==> spliting .."
     adb wait-for-device && adb reboot recovery
     adb wait-for-device && adb push busybox /tmp/busybox
     adb wait-for-device && adb push split_part.sh /tmp/split_part.sh
@@ -27,6 +28,7 @@ split(){
 }
 
 format(){
+    echo "==> formating .."
     adb wait-for-device && adb reboot recovery
     adb wait-for-device && adb push busybox /tmp/busybox
     adb wait-for-device && adb push format_part.sh /tmp/format_part.sh
