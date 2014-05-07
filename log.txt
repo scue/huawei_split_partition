@@ -1,0 +1,48 @@
+➜  utils git:(linux) ./run_linux.sh
+==> spliting ..
+4035 KB/s (1979024 bytes in 0.478s)
+27 KB/s (1222 bytes in 0.042s)
+
+The number of cylinders for this disk is set to 477184.
+There is nothing wrong with that, but this is larger than 1024,
+and could in certain setups cause problems with:
+1) software that runs at boot time (e.g., old versions of LILO)
+2) booting and partitioning software from other OSs
+   (e.g., DOS FDISK, OS/2 FDISK)
+
+Command (m for help): Partition number (1-19):
+Command (m for help): Partition number (1-18):
+Command (m for help): First cylinder (16682-477184, default 16682): Last cylinder or +size or +sizeM or +sizeK (125954-477184, default 477184):
+Command (m for help): First cylinder (16682-477184, default 16682): Last cylinder or +size or +sizeM or +sizeK (188456-477184, default 477184): Using default value 477184
+
+Command (m for help): Partition number (1-19): Hex code (type L to list codes): Changed system type of partition 19 to c (Win95 FAT32 (LBA))
+
+Command (m for help): The partition table has been altered!
+
+Calling ioctl() to re-read partition table
+fdisk: WARNING: rereading partition table failed, kernel still uses old table: Device or resource busy
+==> formating ..
+3943 KB/s (1979024 bytes in 0.490s)
+28 KB/s (1123 bytes in 0.038s)
+warning: 295 blocks unused
+
+Filesystem label=data
+OS type: Linux
+Block size=1024 (log=0)
+Fragment size=1024 (log=0)
+125416 inodes, 499713 blocks
+25000 blocks (5%) reserved for the super user
+First data block=1
+Maximum filesystem blocks=524288
+61 block groups
+8192 blocks per group, 8192 fragments per group
+2056 inodes per group
+Superblock backups stored on blocks:
+        8193, 24577, 40961, 57345, 73729, 204801, 221185, 401409
+Device '/dev/block/mmcblk0p19':
+heads:4, sectors/track:16, bytes/sector:512
+media descriptor:f8
+total sectors:4619664, clusters:576331, sectors/cluster:8
+FATs:2, sectors/FAT:4503
+volumeID:5369cdda, label:'Huawei'
+➜  utils git:(linux) 
