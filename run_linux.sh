@@ -17,7 +17,7 @@
 #      REVISION:  ---
 #===============================================================================
 
-run(){
+split(){
     adb wait-for-device && adb reboot recovery
     adb wait-for-device && adb push busybox /tmp/busybox
     adb wait-for-device && adb push split_part.sh /tmp/split_part.sh
@@ -26,12 +26,21 @@ run(){
     adb wait-for-device && adb shell /tmp/split_part.sh
 }
 
+format(){
+    adb wait-for-device && adb reboot recovery
+    adb wait-for-device && adb push busybox /tmp/busybox
+    adb wait-for-device && adb push format_part.sh /tmp/format_part.sh
+    adb wait-for-device && adb shell chmod 755 /tmp/busybox
+    adb wait-for-device && adb shell chmod 755 /tmp/format_part.sh
+    adb wait-for-device && adb shell /tmp/format_part.sh
+}
+
 device=$(adb devices | grep device$ ||\
     adb devices | grep recovery$)
 
 if [[ -z $device ]]; then
     echo "==> 没找到 Android 设备"
 else
-    run && run
+    split && format
     adb reboot
 fi
