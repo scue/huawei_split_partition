@@ -50,6 +50,9 @@ $p18_start
 n
 $p19_start
 
+t
+19
+c
 w
 
 EOF
