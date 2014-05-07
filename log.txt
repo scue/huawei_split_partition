@@ -1,7 +1,9 @@
-➜  utils git:(linux) ./run_linux.sh
+➜  utils git:(fixpart) ./run_linux.sh
 ==> spliting ..
-4035 KB/s (1979024 bytes in 0.478s)
-27 KB/s (1222 bytes in 0.042s)
+3619 KB/s (1979024 bytes in 0.533s)
+31 KB/s (1298 bytes in 0.040s)
+ -> /dev/block/mmcblk0p18 start from 125954
+ -> /dev/block/mmcblk0p19 start from 188456
 
 The number of cylinders for this disk is set to 477184.
 There is nothing wrong with that, but this is larger than 1024,
@@ -22,8 +24,8 @@ Command (m for help): The partition table has been altered!
 Calling ioctl() to re-read partition table
 fdisk: WARNING: rereading partition table failed, kernel still uses old table: Device or resource busy
 ==> formating ..
-3943 KB/s (1979024 bytes in 0.490s)
-28 KB/s (1123 bytes in 0.038s)
+3985 KB/s (1979024 bytes in 0.484s)
+16 KB/s (1123 bytes in 0.065s)
 warning: 295 blocks unused
 
 Filesystem label=data
@@ -44,5 +46,5 @@ heads:4, sectors/track:16, bytes/sector:512
 media descriptor:f8
 total sectors:4619664, clusters:576331, sectors/cluster:8
 FATs:2, sectors/FAT:4503
-volumeID:5369cdda, label:'Huawei'
-➜  utils git:(linux) 
+volumeID:536a418b, label:'Huawei'
+➜  utils git:(fixpart)
