@@ -37,8 +37,26 @@ p19_start=$($busybox awk -va=$cylinders_of_M -vb=$p18_start -vs=$data_size \
 echo " -> /dev/block/mmcblk0p18 start from $p18_start"
 echo " -> /dev/block/mmcblk0p19 start from $p19_start"
 
+detect_18=$($busybox fdisk -l /dev/block/mmcblk0 |\
+    $busybox grep /dev/block/mmcblk0p18)
+
 # 危险操作
-$busybox fdisk /dev/block/mmcblk0 << EOF
+if [[ "$detect_18" == "" ]]; then
+    $busybox fdisk /dev/block/mmcblk0 << EOF
+n
+$p18_start
++$data_size
+n
+$p19_start
+
+t
+19
+c
+w
+
+EOF
+else
+    $busybox fdisk /dev/block/mmcblk0 << EOF
 d
 19
 d
@@ -55,3 +73,4 @@ c
 w
 
 EOF
+fi
