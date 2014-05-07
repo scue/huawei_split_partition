@@ -1,4 +1,4 @@
-#!/bin/bash - 
+#!/sbin/sh
 #===============================================================================
 #
 #          FILE: format_part.sh
@@ -27,4 +27,4 @@ busybox=/tmp/busybox
 #  重新执行再一次执行此脚本
 #-------------------------------------------------------------------------------
 $busybox mke2fs -T ext4 -L data /dev/block/mmcblk0p18
-$busybox mkdosfs -v -n huawei /dev/block/mmcblk0p19
+$busybox mkfs.vfat -v -n Huawei /dev/block/mmcblk0p19
