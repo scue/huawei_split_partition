@@ -43,6 +43,14 @@
 
 自动操作
 ========
-*   **运行脚本**
+
+　　请确保已连接手机到电脑，并已有相应的驱动程序，同时要求手机已ROOT和安装第三方
+Recovery。
+
+*   **Linux**
 
         ./run_linux.sh
+
+*   **Windows**
+
+        run_windows.bat
