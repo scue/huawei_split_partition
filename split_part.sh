@@ -28,15 +28,14 @@ cylinders_of_M=122.0703125
 busybox=/tmp/busybox
 
 # 相关计算
-p18_start=$($busybox fdisk -l /dev/block/mmcblk0 |\
-    $busybox tail -n2 |\
-    $busybox head -n1 |\
-    awk '{print $2}')
-p19_start=$($busybox awk -va=$cylinders_of_M -vb=$p18_start \
-    'BEGIN {print a*512+b+2}')
-p19_end=$($busybox fdisk -l /dev/block/mmcblk0 |\
-    $busybox tail -n1 |\
+p17_end=$($busybox fdisk /dev/block/mmcblk0 -l |\
+    $busybox grep /dev/block/mmcblk0p17 |\
     $busybox awk '{print $3}')
+p18_start=$($busybox awk -va=$p17_end 'BEGIN {print a+2}')
+p19_start=$($busybox awk -va=$cylinders_of_M -vb=$p18_start -vs=$data_size \
+    'BEGIN {print a*s+b+2}')
+echo " -> /dev/block/mmcblk0p18 start from $p18_start"
+echo " -> /dev/block/mmcblk0p19 start from $p19_start"
 
 # 危险操作
 $busybox fdisk /dev/block/mmcblk0 << EOF
