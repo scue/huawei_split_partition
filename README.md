@@ -19,21 +19,29 @@
 
 操作步骤
 ========
-*   **1. 上传文件**
+*   **1. 分区操作**
 
         adb reboot recovery
         adb push busybox /tmp/busybox
         adb push split_part.sh /tmp/split_part.sh
         adb shell chmod 755 /tmp/busybox
         adb shell chmod 755 /tmp/split_part.sh
-
-*   **2. 分区操作**
-
-    第一次操作:
-
         adb shell /tmp/split_part.sh
 
-    第二次操作: 重复步骤"1. 上传文件"
+*   **2. 格式化操作**
 
-        adb shell /tmp/split_part.sh
+        adb reboot recovery
+        adb push busybox /tmp/busybox
+        adb push format_part.sh /tmp/format_part.sh
+        adb shell chmod 755 /tmp/busybox
+        adb shell chmod 755 /tmp/format_part.sh
+        adb shell /tmp/format_part.sh
+
+*   **3. 重启手机**
+
         adb reboot
+
+自动操作
+========
+
+        ./run_linux.sh
