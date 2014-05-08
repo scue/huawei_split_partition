@@ -25,7 +25,7 @@ data_size=512M
 cylinders_of_M=122.0703125
 
 # busybox
-busybox=/tmp/busybox
+busybox=/busybox
 
 # 相关计算
 p17_end=$($busybox fdisk /dev/block/mmcblk0 -l |\
