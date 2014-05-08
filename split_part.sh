@@ -24,8 +24,10 @@ data_size=512M
 # 每兆磁柱
 cylinders_of_M=122.0703125
 
-# busybox
+# tools
 busybox=/busybox
+e2fsck=/e2fsck_s
+resize2fs=/resize2fs_s
 
 # 相关计算
 p17_end=$($busybox fdisk /dev/block/mmcblk0 -l |\
@@ -74,3 +76,13 @@ w
 
 EOF
 fi
+
+# 无损分区
+p18_blocks=$($busybox fdisk /dev/block/mmcblk0 -l |\
+    $busybox grep /dev/block/mmcblk0p18 |\
+    $busybox awk '{print $4}')
+$e2fsck -f /dev/block/mmcblk0p18
+$resize2fs -f -F -M -p /dev/block/mmcblk0p18 $p18_blocks
+
+# 提示可能需要手动格式化内置SD卡
+echo " -> resize data ok, but you maybe format sdcard manually."
