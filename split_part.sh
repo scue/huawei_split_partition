@@ -57,6 +57,10 @@ c
 w
 
 EOF
+    # 有损分区，修复已失败的分区
+    echo " -> found missing partition 18 and 19, recreate and format they."
+    $busybox mke2fs -T ext4 /dev/block/mmcblk0p18
+    $busybox mkfs.vfat -v -n Huawei /dev/block/mmcblk0p19
 else
     $busybox fdisk /dev/block/mmcblk0 << EOF
 d
@@ -75,14 +79,13 @@ c
 w
 
 EOF
+    # 无损分区
+    p18_blocks=$($busybox fdisk /dev/block/mmcblk0 -l |\
+        $busybox grep /dev/block/mmcblk0p18 |\
+        $busybox awk '{print $4}')
+    $e2fsck -f -y /dev/block/mmcblk0p18
+    $resize2fs -f -F -M -p /dev/block/mmcblk0p18 $p18_blocks
+    # 提示可能需要手动格式化内置SD卡
+    echo " -> resize data ok, but you maybe format sdcard manually."
 fi
 
-# 无损分区
-p18_blocks=$($busybox fdisk /dev/block/mmcblk0 -l |\
-    $busybox grep /dev/block/mmcblk0p18 |\
-    $busybox awk '{print $4}')
-$e2fsck -f -y /dev/block/mmcblk0p18
-$resize2fs -f -F -M -p /dev/block/mmcblk0p18 $p18_blocks
-
-# 提示可能需要手动格式化内置SD卡
-echo " -> resize data ok, but you maybe format sdcard manually."
