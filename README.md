@@ -60,4 +60,12 @@ Recovery。
 
 *   **Windows**
 
+    +   请连接手机，并打开USB调试
+    +   通过手机助手这类软件安装好驱动
+    +   运行 run_windows.bat，手机会自动进入recovery模式
+    +   手机在recovery模式，可在 计算机 -- 管理 -- 设备管理器 中找到“Android Phone”
+    +   如果设备管理器没能到“Android Phone”，则需要再安装驱动
+    +   确保recovery模式的手机已被正确识别之后，按下任意键，让run_windows.bat继续运行
+    +   完美分区后手机会自动重启（分区结束后长时间不能重启是recovery的bug，手动重启即可）
+
         run_windows.bat
