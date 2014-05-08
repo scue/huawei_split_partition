@@ -8,6 +8,8 @@
 　　分区完成前后，手机Data数据空间内容不丢失，原有安装的软件依然存在，稍有遗憾的
 如果是增大Data数据空间，内置SD卡在分区之后可能不可用，需要手动格式化。
 
+![screenshot.gif](https://github.com/scue/huawei_split_partition/raw/shots/shots/windows.gif)
+
 相关变量
 ========
 *   **1.data_size**
