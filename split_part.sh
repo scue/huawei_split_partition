@@ -5,7 +5,7 @@
 # 
 #         USAGE: /tmp/splite_part.sh 
 # 
-#   DESCRIPTION:对华为U8825D和华为U8950d重新分区操作，默认Data大小是512M 
+#   DESCRIPTION:对华为U8825D和华为U8950d重新分区操作，默认Data大小是1536M(1.5G)
 #               需在recovery中操作，请上传 busybox 到 /tmp/busybox 
 # 
 #       OPTIONS: ---
@@ -19,7 +19,7 @@
 #===============================================================================
 
 # 数据空间
-data_size=512M
+data_size=1536M
 
 # 每兆磁柱
 cylinders_of_M=122.0703125
@@ -81,7 +81,7 @@ fi
 p18_blocks=$($busybox fdisk /dev/block/mmcblk0 -l |\
     $busybox grep /dev/block/mmcblk0p18 |\
     $busybox awk '{print $4}')
-$e2fsck -f /dev/block/mmcblk0p18
+$e2fsck -f -y /dev/block/mmcblk0p18
 $resize2fs -f -F -M -p /dev/block/mmcblk0p18 $p18_blocks
 
 # 提示可能需要手动格式化内置SD卡
